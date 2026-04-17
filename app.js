@@ -69,3 +69,29 @@ function changeLanguage() {
     document.getElementById("welcome").innerText = "እንኳን ደህና መጡ!";
   }
 }
+// ሌሎች functions (ካሉ)
+
+function changeLanguage() {
+  let lang = document.getElementById("languageSelect").value;
+
+  if (lang === "en") {
+    document.getElementById("title").innerText = "Dashboard";
+    document.getElementById("welcome").innerText = "Welcome!";
+  } else {
+    document.getElementById("title").innerText = "ዳሽቦርድ";
+    document.getElementById("welcome").innerText = "እንኳን ደህና መጡ!";
+  }
+}
+
+// 👉 እዚህ ከታች አክል
+function login() {
+  let user = document.getElementById("username").value;
+  let pass = document.getElementById("password").value;
+
+  if (user === "admin" && pass === "1234") {
+    localStorage.setItem("loggedIn", "true");
+    window.location.href = "dashboard.html";
+  } else {
+    alert("Wrong username or password");
+  }
+}
