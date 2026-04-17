@@ -5,6 +5,11 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <script>
+  if (localStorage.getItem("loggedIn") !== "true") {
+    window.location.href = "index.html";
+  }
+</script>
  <select id="languageSelect" onchange="changeLanguage()">
   <option value="am">አማርኛ</option>
   <option value="en">English</option>
