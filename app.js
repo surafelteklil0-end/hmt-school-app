@@ -46,3 +46,10 @@ function applyLang(){
 }
 
 window.onload = applyLang;
+function go(page){
+  alert(page + " page coming soon");
+}
+
+function logout(){
+  window.location.href = "index.html";
+}
