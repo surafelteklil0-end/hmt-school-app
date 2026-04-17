@@ -95,3 +95,7 @@ function login() {
     alert("Wrong username or password");
   }
 }
+function logout() {
+  localStorage.removeItem("loggedIn");
+  window.location.href = "index.html";
+}
