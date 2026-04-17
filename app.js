@@ -29,8 +29,13 @@ function login(){
   let currentLang = localStorage.getItem("lang") || "en";
 
   if(user){
-    document.getElementById("msg").innerText = lang[currentLang].success;
-  }else{
+  document.getElementById("msg").innerText = lang[currentLang].success;
+
+  setTimeout(()=>{
+    window.location.href = "dashboard.html";
+  },1000);
+
+}else{
     document.getElementById("msg").innerText = lang[currentLang].fail;
   }
 }
