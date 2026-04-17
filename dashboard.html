@@ -1,32 +1,14 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html>
 <head>
   <title>Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <script>
+<body><!-- 🔐 Login check --><script>
   if (localStorage.getItem("loggedIn") !== "true") {
     window.location.href = "index.html";
   }
-</script>
- <select id="languageSelect" onchange="changeLanguage()">
-  <option value="am">አማርኛ</option>
-  <option value="en">English</option>
-</select> 
+</script><h1 id="title">ዳሽቦርድ</h1>
+<p id="welcome">እንኳን ደህና መጡ!</p><!-- 🚪 Logout Button --><button onclick="logout()">Logout</button>
 
-<div class="container">
-  <h2 id="welcome">Welcome</h2>
-
-  <div class="card" onclick="go('students')">👨‍🎓 Students</div>
-  <div class="card" onclick="go('payments')">💳 Payments</div>
-  <div class="card" onclick="go('reports')">📊 Reports</div>
-
-  <button onclick="logout()">Logout</button>
-</div>
-
-<script src="app.js"></script>
-</body>
+<!-- JS file --><script src="app.js"></script></body>
 </html>
-<h1 id="title">ዳሽቦርድ</h1>
-<p id="welcome">እንኳን ደህና መጡ!</p>
