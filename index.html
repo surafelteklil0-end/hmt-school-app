@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HMT School App</title>
+  <title>HMT School</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h2 id="title">Login</h2>
+<div class="container">
 
-<input type="text" id="username" placeholder="Username"><br><br>
-<input type="password" id="password" placeholder="Password"><br><br>
+  <h2 id="title">Login</h2>
 
-<button onclick="login()">Login</button>
+  <div class="lang-switch">
+    <button onclick="setLang('am')">አማ</button>
+    <button onclick="setLang('en')">EN</button>
+  </div>
 
-<p id="msg"></p>
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
 
-<hr>
+  <button class="login-btn" onclick="login()">Login</button>
 
-<button onclick="setLang('am')">አማርኛ</button>
-<button onclick="setLang('en')">English</button>
+  <p id="msg"></p>
+
+</div>
 
 <script src="app.js"></script>
 </body>
