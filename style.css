@@ -1,1 +1,20 @@
-0
+body {
+  font-family: Arial;
+  background: #f4f6f9;
+}
+.container {
+  width: 90%;
+  margin: auto;
+}
+.card {
+  background: white;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+}
+.header {
+  background: green;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
