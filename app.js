@@ -1,47 +1,75 @@
-function login() {
-  let user = document.getElementById("username").value;
-  let pass = document.getElementById("password").value;
-  let role = document.getElementById("role").value;
+// 🧠 STUDENTS DATABASE
+const students = {
+  "abebe amara wogaso": 1001,
+  "negst adane wola": 1002,
+  "mox endale areka": 1003,
+  "surafel teklil wolde": 1031,
+  "yared kidane zeleke": 1032,
+  "endale alebachew amde": 1033
+};
 
-  if (pass === "1234") {
-    localStorage.setItem("role", role);
-    localStorage.setItem("username", user);
+// 🔐 LOGIN
+function login() {
+  let name = document.getElementById("username").value.toLowerCase();
+  let pass = document.getElementById("password").value;
+  let code = document.getElementById("code").value;
+
+  // OWNER
+  if (name === "owner" && pass === "1234") {
+    localStorage.setItem("role", "owner");
+    localStorage.setItem("username", "Owner");
+    window.location.href = "dashboard.html";
+    return;
+  }
+
+  // ADMIN
+  if (name === "admin" && pass === "1234") {
+    localStorage.setItem("role", "admin");
+    localStorage.setItem("username", "Admin");
+    window.location.href = "dashboard.html";
+    return;
+  }
+
+  // STUDENT
+  if (students[name] && students[name] == code) {
+    localStorage.setItem("role", "student");
+    localStorage.setItem("username", name);
     window.location.href = "dashboard.html";
   } else {
-    alert("Wrong password");
+    alert("Wrong login");
   }
 }
 
+// 🚪 LOGOUT
 function logout() {
   localStorage.clear();
   window.location.href = "index.html";
 }
 
-// ✅ ROLE CONTROL
-function controlAccess() {
+// 🎯 ROLE CONTROL + WELCOME
+function control() {
   let role = localStorage.getItem("role");
+  let user = localStorage.getItem("username");
 
-  if (!role) {
-    window.location.href = "index.html";
-  }
+  if (!role) window.location.href = "index.html";
+
+  document.getElementById("welcome").innerText =
+    "Welcome " + user;
 
   if (role !== "owner") {
-    let userSection = document.getElementById("userSection");
-    if (userSection) userSection.style.display = "none";
+    let sec = document.getElementById("userSection");
+    if (sec) sec.style.display = "none";
   }
 }
 
-// PAYMENT
+// 💳 PAYMENT
 function makePayment() {
-  let payment = {
-    name: document.getElementById("studentName").value,
-    amount: document.getElementById("amount").value,
-    type: document.getElementById("paymentType").value,
-    date: document.getElementById("date").value
-  };
+  let name = document.getElementById("studentName").value;
+  let amount = document.getElementById("amount").value;
 
   let data = JSON.parse(localStorage.getItem("payments")) || [];
-  data.push(payment);
+  data.push({ name, amount });
+
   localStorage.setItem("payments", JSON.stringify(data));
   displayPayments();
 }
@@ -54,21 +82,19 @@ function displayPayments() {
   list.innerHTML = "";
   data.forEach(p => {
     let li = document.createElement("li");
-    li.innerText = p.name + " - " + p.amount + " - " + p.type;
+    li.innerText = p.name + " - " + p.amount;
     list.appendChild(li);
   });
 }
 
-// FEEDBACK
+// 💬 FEEDBACK
 function sendFeedback() {
-  let fb = {
-    name: document.getElementById("fbName").value,
-    text: document.getElementById("feedbackText").value,
-    time: new Date().toLocaleString()
-  };
+  let name = document.getElementById("fbName").value;
+  let text = document.getElementById("feedbackText").value;
 
   let data = JSON.parse(localStorage.getItem("feedbacks")) || [];
-  data.push(fb);
+  data.push({ name, text });
+
   localStorage.setItem("feedbacks", JSON.stringify(data));
   displayFeedback();
 }
@@ -86,15 +112,13 @@ function displayFeedback() {
   });
 }
 
-// USERS (owner only)
+// 👥 USERS (OWNER)
 function addUser() {
-  let user = {
-    username: document.getElementById("newUsername").value,
-    role: document.getElementById("newRole").value
-  };
+  let name = document.getElementById("newUsername").value;
 
   let data = JSON.parse(localStorage.getItem("users")) || [];
-  data.push(user);
+  data.push(name);
+
   localStorage.setItem("users", JSON.stringify(data));
   displayUsers();
 }
@@ -107,14 +131,14 @@ function displayUsers() {
   list.innerHTML = "";
   data.forEach(u => {
     let li = document.createElement("li");
-    li.innerText = u.username + " (" + u.role + ")";
+    li.innerText = u;
     list.appendChild(li);
   });
 }
 
-// LOAD
+// 🔥 LOAD
 window.onload = function () {
-  controlAccess();   // 🔥 important fix
+  control();
   displayPayments();
   displayFeedback();
   displayUsers();
