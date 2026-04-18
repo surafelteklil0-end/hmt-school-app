@@ -10,14 +10,11 @@
   <div class="card">
     <h2>Login</h2>
 
-    <input type="text" id="username" placeholder="Username"><br>
-    <input type="password" id="password" placeholder="Password"><br>
+    <input type="text" id="username" placeholder="Enter Name"><br>
+    <input type="password" id="password" placeholder="Password (admin/owner)"><br>
 
-    <select id="role">
-      <option value="owner">Owner</option>
-      <option value="admin">Admin</option>
-      <option value="student">Student</option>
-    </select><br>
+    <!-- student only -->
+    <input type="number" id="code" placeholder="Student Code"><br>
 
     <button onclick="login()">Login</button>
   </div>
