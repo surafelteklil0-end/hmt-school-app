@@ -5,8 +5,11 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <div class="header">School System</div>
+
 <div class="container">
+
 <div class="card">
   <h2>Payment</h2>
   <input id="studentName" placeholder="Name">
@@ -19,6 +22,7 @@
   <button onclick="makePayment()">Pay</button>
   <ul id="paymentList"></ul>
 </div>
+
 <div class="card">
   <h2>Feedback</h2>
   <input id="fbName" placeholder="Name">
@@ -26,7 +30,9 @@
   <button onclick="sendFeedback()">Send</button>
   <ul id="feedbackList"></ul>
 </div>
-<div class="card">
+
+<!-- ✅ OWNER ONLY -->
+<div class="card" id="userSection">
   <h2>User Management</h2>
   <input id="newUsername" placeholder="Username">
   <select id="newRole">
@@ -36,8 +42,11 @@
   <button onclick="addUser()">Add</button>
   <ul id="userList"></ul>
 </div>
+
 <button onclick="logout()">Logout</button>
+
 </div>
+
 <script src="app.js"></script>
 </body>
 </html>
