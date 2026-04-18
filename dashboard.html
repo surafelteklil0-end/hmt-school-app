@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<div class="header">School System</div>
+<div class="header" id="welcome"></div>
 
 <div class="container">
 
@@ -14,11 +14,6 @@
   <h2>Payment</h2>
   <input id="studentName" placeholder="Name">
   <input id="amount" placeholder="Amount">
-  <select id="paymentType">
-    <option>tuition</option>
-    <option>exam</option>
-  </select>
-  <input type="date" id="date">
   <button onclick="makePayment()">Pay</button>
   <ul id="paymentList"></ul>
 </div>
@@ -31,14 +26,10 @@
   <ul id="feedbackList"></ul>
 </div>
 
-<!-- ✅ OWNER ONLY -->
+<!-- OWNER ONLY -->
 <div class="card" id="userSection">
   <h2>User Management</h2>
   <input id="newUsername" placeholder="Username">
-  <select id="newRole">
-    <option>admin</option>
-    <option>student</option>
-  </select>
   <button onclick="addUser()">Add</button>
   <ul id="userList"></ul>
 </div>
